@@ -2,6 +2,7 @@ pipeline {
     agent {
         label 'master'
     }
+    environment = 'e56763a53812409e5033876c84bcce8b710f2e24'
     stages {
         stage('Build') {
             steps {
@@ -28,7 +29,7 @@ pipeline {
         }
         stage('Sonar-Report') {
             steps {
-                bat 'mvn clean install sonar:sonar -Dsonar.host.url=http://localhost:8090 -Dsonar.analysis.mode=publish'
+                bat 'mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=Mehtabsingh03_webapp'
             }
         }
     }
